@@ -8,7 +8,7 @@
 
 直接打开cmd【WIN+R】，输入：`mysql -u root -p`
 
-![1567657054565](C:\Users\liushensuo\AppData\Roaming\Typora\typora-user-images\1567657054565.png)
+![1567657054565](../images/1567657054565.png)
 
 ### (2)未配置环境变量
 
