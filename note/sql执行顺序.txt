@@ -1,0 +1,41 @@
+1.group by
+
+在使用select查询的时候，有时需要对数据进行分组汇总（即：将现有的数据按照某列来汇总统计），这时就需要用到group by语句。select 语句中可以使用group by 子句将行划分成较小的组，然后，使用聚合函数返回每一个组的汇总信息。//分组一般都和聚合函数连用。
+
+GROUP BY子句必须放到WHERE语句的之后 ,Group By与Order By都是对筛选后的数据进行处理，而Where是用来筛选数据的。
+
+当使用了分组语句(group by)或者是聚合函数的时候，在select查询列表中不能包含其它列名，除非该列同时也出现在了group子句中，或者该列出现在某个聚合函数中。
+
+--将表中数据按照性别来分组，并统计每种性别的人数
+select 
+       sum(tsage)            -tsage列包含在聚合函数sum中，如果不是聚合函数不能添加该列 
+       性别 = tsgender,       -tsgender出现在group by 子句中
+       人数 = count(*)        -人数列包含在聚合函数中
+from  Tblstudent
+group by tsgender
+--执行顺序：1.from......2.group by.......3.select......       
+2.having
+
+    having是对分组之后的组数据进行筛选，where是对分组之前的每一行数据进行筛选
+
+select 
+      tsclassid as 班级ID，
+      班级人数 = count(*)
+from TblStudent
+group by tsClassId
+having count(*)>10 
+order by 班级人数 asc -- 将班级中按班级人数分组之后，分组之后班级人数>10的班级找出
+                       -- order by 可以使用列名因为select语句已经执行完毕
+3. select语句的处理顺序
+
+FROM
+ON
+JOIN
+WHERE
+GROUP BY
+WITH CUBE 或 WITH ROLLUP
+HAVING
+SELECT
+DISTINCT
+ORDER BY
+TOP

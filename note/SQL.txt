@@ -1,0 +1,80 @@
+李腾飞 2019/5/8 17:36:30
+ALTER TABLE biz_operation_report_user DROP INDEX `unique_key_report_month`;
+ALTER TABLE biz_operation_report_user ADD UNIQUE INDEX `unique_key_biz_report_user`(`report_month`,`user_attribute`);
+●联合索引
+
+
+
+●MySQL：http://www.w3school.com.cn/sql/sql_dates.asp
+函数DATEADD/DATESUB只能传入date类型【即以具体日期为准的间隔时间内】<无法只传入年月进行范围时间限定>
+
+*【between  月初1号-3个月  and  月末】
+
+--	查询传入月份以及近N个月数据
+select * from 表名 where 时间字段 between  DATEADD(mm,-3,getdate())  and getdate()【SQL SERVER的】
+
+--	日期格式化
+select DATE_FORMAT(collected_date,'%Y-%m')AS collected_date FROM biz_operation_report_collect;
+
+为什么没有根据where筛选。。。【DATE_SUB是根据具体日期即：yyyy-MM-DD来返回  指定日期前N个月  即：N个月前的那一天起算】
+select DATE_FORMAT(collected_date,'%Y-%m')AS '月份' from biz_operation_report_collect where collected_date BETWEEN DATE_SUB("2019-3-1",INTERVAL 3 MONTH) and "2019-3-1";
+
+
+SELECT *FROM 表 WHERE PERIOD_DIFF(DATE_FORMAT(CURDATE(),'%m'),DATE_FORMAT(字段名,'%m'))=-1 //以月为维度【第一个参数 - 第二个参数】
+参考这条：select from 表 PERIOD_DIFF(DATE_FORMAT(传入时间,'%m'),DATE_FORMAT(数据库中时间字段,'%m'))=3
+数据搜索范围可通过最后判断的值进行调整 0为当月 1是上个月 -1为下个月 以此类推【但是仅仅为相差间隔的那一个月  不能返回间隔中所有月】
+
+
+
+
+
+●select count(0)：忽略所有列，用数字效率要高一些，因为统计行数，与列无关。
+
+select DATE_FORMAT(report_month,'%Y-%m') ,login_num,portal_num,baidu_num,other_num FROM biz_operation_report_page_view
+ WHERE DATE_FORMAT(report_month,'%Y-%m') BETWEEN DATE_FORMAT(DATE_SUB("2019-04-2",INTERVAL 3 MONTH),'%Y-%m') AND DATE_FORMAT("2019-04-2",'%Y-%m');
+
+
+select DATE_FORMAT(report_month,'%Y-%m') ,login_num,portal_num,baidu_num,other_num FROM biz_operation_report_page_view;
+
+SELECT COUNT(0) from biz_operation_report_page_view WHERE DATE_FORMAT(report_month,'%Y-%m')=DATE_FORMAT("2019-01-09",'%Y-%m');
+
+INSERT INTO biz_operation_report_page_view (id,report_month,login_num,portal_num,baidu_num,other_num,created_time,updated_time)
+VALUES (3,'2019-1-1','2','3','4','5',NOW(),NOW());
+
+UPDATE biz_operation_report_page_view SET login_num=23232,portal_num=3,updated_time=NOW() WHERE report_month='2019-1-1';
+
+
+
+●DATE_FORMAT（官方解读：https://www.w3school.com.cn/sql/func_date_format.asp）
+DATE_FORMAT函数：日期格式化函数  
+DATE_FORMAT(date,format)    date 参数是合法的日期。format 规定日期/时间的输出格式【参考最新官方定义表达式】
+
+
+
+●STR_TO_DATE（教程：https://www.yiibai.com/mysql/str_to_date.html）
+STR_TO_DATE(str,format)  函数是将时间格式的字符串（str），按照所提供的显示格式（format）转换为DATETIME类型的值
+
+STR_TO_DATE()根据fmt格式字符串将str字符串转换为日期值。 
+STR_TO_DATE()函数可能会根据输入和格式字符串返回DATE，TIME或DATETIME值。 如果输入字符串是非法的，则STR_TO_DATE()函数返回NULL。
+
+
+
+
+●TIMESTAMPDIFF、SUBSTR
+
+TIMESTAMPDIFF(interval,datetime_expr1,datetime_expr2)返回日期或日期时间表达式datetime_expr1 和datetime_expr2 之间的整数差。
+其结果的单位由interval 参数给出,interval可以是MICROSECOND、SECOND、MINUTE、HOUR、DAY、WEEK、MONTH、QUARTER、YEAR
+
+SUBSTR(string string,num start,num length) string为字符串；start为起始位置；length为长度  从1开始计数【即下标从1起，而非0】
+
+
+●IFNULL（MySQL中IFNULL）
+IFNULL() 函数用于判断第一个表达式是否为 NULL，如果为 NULL 则返回第二个参数的值，如果不为 NULL 则返回第一个参数的值。
+表达式：
+IFNULL(expression, alt_value)
+参数：expression  要测试的值
+参数：alt_value  expression参数为null时返回的值
+
+●in、exist
+区分in和exist主要是造成了驱动顺序的改变（这是性能变化的关键），如果是exist，那么以外层表为驱动表，先被访问；如果是in，那么先执行子查询，
+所以：in适合于外表大而内表小的情况；exist适用于外表小而内表大的情况
