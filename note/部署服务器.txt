@@ -1,0 +1,49 @@
+在一台机器上部署HTTP的WEB服务器
+
+在Linux上搭建HTTP服务
+https://blog.csdn.net/qq_28769831/article/details/77462281
+https://blog.csdn.net/ZJJ_5346/article/details/78587889
+
+
+
+
+在Linux上搭建WEB服务（先要部署HTTP服务，不然var目录下没有www）
+先查看：cd /var/www/html
+
+
+测试：
+在HTML文件目录下写一个配置文件：例：mypage.html
+内容如下:<html>
+		<head>
+		</head>
+		<body>
+			随意写点内容，通过浏览器访问
+		</body>
+	 </html>
+
+1、在HTML目录下创建子目录，例：centos6
+
+2、将光盘镜像文件挂在到该目录（centos6）下（在HTTP服务的web目录中放入RPM库）
+
+ 1）mount -t iso9660 -o ro /mnt/cdrom/ /var/www/html/centos6
+ 2）创建软连接即可（节省空间）：ln -s /mnt/cdrom  /var/www/html/centos6
+
+这样通过浏览器输入文件地址即可访问该目录:http://IP地址或主机名/centos6
+
+3、配置yum客户端repo地址文件
+   将本地HTTP服务器加入repo地址
+	1）首先，新建一个repo.d文件(使原来的源都失效：可以改名都加.bak，就识别不出来了)
+	2）然后，修改刚创建的repo.d文件，  vi ****.repo
+		文件内容：[名称]
+			  name=****
+			  baseurl=http://192.**.**.**/centos6（即可通过HTTP访问【即其他人访问】）
+			  baseurl=file:///文件目录（也可访问本地文件）
+			  gpgcheck=0
+			  enabled=1
+			  gpgkey-file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6(本条记录不用修改)
+
+4、检查源是否生效：yum repolist
+5、查看库中有哪些文件：yum list   通过管道寻找自己想要安装的文件
+
+
+

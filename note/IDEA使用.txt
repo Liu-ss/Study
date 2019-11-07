@@ -1,0 +1,27 @@
+●IDEA克隆Git项目时报错：Clone failed: Authentication failed for 'http://git.xxx.xxx'
+    原因：修改了Git账户密码，本机存储的信任凭据为修改【还是原来的密码】导致不能克隆成功
+    解决方案：控制面板-->用户账户-->管理Windows信任凭据，将其删除即可【再之后登陆会再次重新保存新的信任凭据】
+
+
+1、IDEA导航栏中Tools下有一个HTTP Client 中有一个Test RESTful Web Service功能与postman相似，可以通过不同的请求方式发起请求。
+2、IDEA中调整使用Git、CVS的选项在File-->Setting-->Version Control
+3、IDEA 中如何查看maven项目中所有jar包的依赖关系图：
+   ●通过点击IDEA右侧的Maven，之后点击Maven下顶部工具栏中一项Show Dependencies（Ctrl+Alt+Shift+U），即可看到jar包之间的依赖关系
+     Ctrl+滚轮可以放大缩小【右击选项中有一项Actual Size可以自动适配大小】，Alt键可以实现放大镜功能。
+   ●在类文件中通过鼠标右击点Diagrams 下 Show Diagrams，即可看到类之间关系。
+4、双击Shift键，启用搜索功能
+5、IDEA 查找接口实现类的快捷键：
+查找接口的实现类：ctrl + alt +B          查看类或接口的继承关系：ctrl + h
+6、IDEA中设置项目的本地仓库：File-->Setting-->Build, Execution, DeploymentFile-->Build Tools-->Maven
+7、IDEA中设置项目的仓库源（无、Git、CVS等）：File-->Settings-->Version Control
+8、IDEA中设置Java版本：File --> Settings --> Build, Execution, Deployment --> Build Tools --> Maven --> Importing
+9、在IDEA启动多个Spring Boot工程实例：在IDEA右上角运行处点击下拉三角，会弹出Edit Configurations；
+   然后在启动类的设置选项中右上角有一个单选框Allow parallel run（并行运行），就可以跑多个实例。
+10、快速生成getter、setter方法：ALT+Inster 
+11、项目中添加新的依赖:
+    方法一：在Apache官网搜索（http://commons.apache.org/），左侧第三栏（PROJECT DOCUMENTATION）下有 Dependency Information，就可以找到依赖添加方法【Maven/Gradle】
+    方法二：Maven官网（https://mvnrepository.com/）直接搜索、点击版本进入详情，就会有maven、gradle依赖添加方法
+12、错误：找不到或无法加载主类
+    菜单---》File---》Invalidate Caches/Restart 选择Invalidate and Restart 或者 只是Invalidate，清除掉缓存，然后Rebuild Project
+13、IDEA插件：https://xuliugen.blog.csdn.net/article/details/78970079【快速找到对应mapper.xml文件:Ctrl+Alt+B】
+14、快速注释：Ctrl+/

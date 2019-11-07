@@ -1,0 +1,2 @@
+阿里巴巴Java开发手册中的DO、DTO、BO、AO、VO、POJO定义
+https://www.cnblogs.com/EasonJim/p/7967999.html

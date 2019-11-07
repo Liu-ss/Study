@@ -1,0 +1,13 @@
+安装rabbitmq时
+安装过程detail提示ERROR：epmd error for host xxxx(主机名) : address(can't connect to host/port)
+安装完后在cmd面板开启web管理页面，提示：unchanged，无法对主机xxx做出改变
+
+
+解决方案：若安装了RabbitMQ，先删除RabbitMQ服务，卸载RabbitMQ，然后杀死epmd.exe进程，删除C:\Users\liushs-s\AppData\Roaming\RabbitMQ
+转到控制面板->系统->高级->环境变量，添加一个名为：RABBIT_NODENAME 的变量，值设置为：rabbit@localhost
+并重新安装RabbitMQ，即可解决。
+链接：https://stackoverflow.com/questions/38343656/epmd-error-for-host-myhost-address-cannot-connect-to-host-port-on-windows-10
+
+
+个人理解：在设置了环境变量之后，安装时就会直接注册到用户节点，没有环境变量时，应该是直接注册在系统节点，
+之后再开启web服务时无法连接到用户节点，所以访问http://localhost:15672时，无法访问

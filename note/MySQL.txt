@@ -1,0 +1,14 @@
+https://www.cnblogs.com/gumuzi/p/5711495.html
+
+https://blog.csdn.net/rogerzhanglijie/article/details/9182125
+登录提示拒绝，然后输入MySQL命令需要修改密码的话，使用上述链接中方法搞定，即：SET PASSWORD = PASSWORD('新密码')
+然后 create database roger;即可
+
+第一次安装需要修改密码
+方式一：通过修改文件/usr/bin/mysql_secure_installation  文件进行密码修改
+方式二：使用初始给定的密码登录（密码所在目录：cat /root/.mysql_secret），使用此密码登录，然后根据提示修改密码。
+
+登录MySQL：mysql -u root -p root（登录拒绝：输入mysql -u root -p ，回车 提示输入密码 root  即可）
+
+mysql数据库备份：使用mysqldump命令（注：是在cmd中进行【win+R】）
+		备份命令：mysqldump -u**** -p**** database_name > E:\xxx.sql(例：mysqldump -uroot -proot test > e:\test.sql)【●注：-u与用户名之间没有空格、-p与密码之间没有空格】

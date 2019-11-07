@@ -1,0 +1,4 @@
+oracle——sqldeveloper异常（连接名myorcl,用户scott，密码Mm123456,SID:orcl）
+https://blog.csdn.net/wangshuai6707/article/details/40039987?winzoom=1
+
+Oracle数据库常用Sql语句大全（https://www.cnblogs.com/Im-Victor/p/7795192.html）
