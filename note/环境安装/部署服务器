@@ -44,6 +44,3 @@ https://blog.csdn.net/ZJJ_5346/article/details/78587889
 
 4、检查源是否生效：yum repolist
 5、查看库中有哪些文件：yum list   通过管道寻找自己想要安装的文件
-
-
-

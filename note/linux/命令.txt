@@ -1,0 +1,45 @@
+1、vim test.log (适用于小文件)
+	G：跳转至文件末尾；
+	?：关键字搜索对应记录；
+	n：往上查询
+	N：往下查询
+
+2、查看实时日志：tail -f test.log
+3、查看对应行号：cat -n test.log
+4、查看第n行到第m行(后接参数p)：sed -n "n,mp" test.log【例：sed -n "600,650p" queryLog.2019-08-25-0.log】
+5、查看日志一共有多少行：cat test.log | wc -l
+6、查看进程和端口：ps -ef
+				   ps -aux
+				   netstat -lntup
+7、实时查看进程状态：top
+8、查看内存使用情况：free
+9、查看ip：ifconfig
+10、查看磁盘使用情况：df -h
+11、查看某时间段的日志：【使用精准时间可能查询不到结果，需要使用正则表达式】
+	sed -n '/2019-09-10 15:[0-9][0-9]:[0-9][0-9]/,/2019-09-10 15:[0-9][0-9]:[0-9][0-9]/p' account-scheduler.2019-09-10-0.log
+	grep '2019-09-10 15:4[1-5]' account-scheduler.2019-09-10-0.log
+
+12、查看某时间附近N行日志：grep '2019-09-18 18:59:54.336' -A 250 -B 250 account_scheduler.log2
+
+
+
+kubernets
+
+查看状态：kubectl get pods,svc -n 容器名 -o wide
+
+解压zip
+unzip name
+
+查看pod：kubectl get po -n 容器名 -o wide
+查看日志：kubectl logs podname -n 容器名
+显示Node的详细信息：kubectl describe node ip
+查看实时日志：kubectl logs -f podname -n 容器名【ctrl+Z 停止】
+查看最近N行日志：kubectl logs --tail 2000 -f podname -n 容器名
+查看某个时间前后N行：kubectl logs -f  podname -n容器名 | grep '2020-01-06 10:17:30.096' -A 100 -B 100
+
+
+目录： root/bss/fusionproduct2
+部署流程：
+trident-deploy 目录下与 template 同级执行删除命令  kubectl delete -f  template/deployment.yaml
+后执行生成命令  kubectl apply -f template/
+再install-命令： sh ./inspur-contract-service/install.sh ./inspur-contract-service/values.yaml
