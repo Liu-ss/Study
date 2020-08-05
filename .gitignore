@@ -1,0 +1,7 @@
+/code/.gradle/
+/code/gradle/wrapper/
+/code/gradlew
+/code/gradlew.bat
+/code/settings.gradle
+/.idea/gradle.xml
+/.idea/jarRepositories.xml
