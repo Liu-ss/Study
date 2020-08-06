@@ -2,8 +2,6 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/note/IDEA使用.txt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/note/MySQL.txt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/note/RabbitMQ.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/note/SVN.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/note/oracle.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/note/使用电脑.txt" charset="UTF-8" />
@@ -11,6 +9,6 @@
     <file url="file://$PROJECT_DIR$/note/笔记.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/note/规范.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/note/谨记.txt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/note/部署服务器.txt" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

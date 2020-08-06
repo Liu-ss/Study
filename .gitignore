@@ -5,3 +5,5 @@
 /code/settings.gradle
 /.idea/gradle.xml
 /.idea/jarRepositories.xml
+/code/build/
+/code/out/
