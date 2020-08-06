@@ -8,6 +8,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 自定义 MyThreadFactory  实现 ThreadFactory（线程池创建线程的方法）
  *
+ * 自定义之后可以对线程进行标识，以便排查问题
+ *
  * 参照原生 java.util.concurrent.Executors 中  DefaultThreadFactory
  *
  */
