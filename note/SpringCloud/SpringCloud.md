@@ -22,9 +22,9 @@ Eureka包含了**服务器端**和**客户端组件**。
 
 ### 1、创建Eureka-service
 
-![1551425583905](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1551425583905.png)
+![1551425583905](/1551425583905.png)
 
-![1551425635404](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1551425635404.png)
+![1551425635404](/1551425635404.png)
 
 
 
@@ -149,7 +149,7 @@ spring:
 显示No application available 没有服务被发现 ……
 因为没有注册服务当然不可能有服务被发现了。
 
-![1551426769044](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1551426769044.png)
+![1551426769044](/1551426769044.png)
 
 ### 3、创建一个服务提供者 (eureka client)
 
@@ -279,11 +279,11 @@ eureka:
 
 你会发现一个服务已经注册在服务中了，服务名为SERVICE-HI ,端口为7862
 
-![1551428033640](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1551428033640.png)
+![1551428033640](/1551428033640.png)
 
 这时打开 http://localhost:8762/hi，你会在浏览器上看到 :
 
-![1551428097659](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1551428097659.png)
+![1551428097659](/1551428097659.png)
 
 ## [四、服务消费者](https://blog.csdn.net/forezp/article/details/81040946)
 
@@ -299,7 +299,7 @@ eureka:
 
 访问localhost:8761可以看到
 
-![1551665570288](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1551665570288.png)
+![1551665570288](/1551665570288.png)
 
 #### 3、创建一个服务消费者
 
@@ -480,9 +480,9 @@ public class HelloController {
 
 （6）在浏览器上多次访问http://localhost:8764/hi?name=Lss，浏览器交替显示：
 
-![1551667126056](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1551667176354.png)
+![1551667126056](/1551667176354.png)
 
-![1551667159724](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1551667192110.png)
+![1551667159724](/1551667192110.png)
 
 这说明当我们通过调用restTemplate.getForObject(“[http://SERVICE-HI/hi?name=](http://service-hi/hi?name=)”+name,String.class)方法时，已经做了负载均衡，访问了不同的端口的服务实例。
 
@@ -1370,7 +1370,7 @@ foo version 21
 
 ![Azure (2).png](https://upload-images.jianshu.io/upload_images/2279594-40ecbed6d38573d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
-![1553241802743](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553241802743.png)
+![1553241802743](/1553241802743.png)
 
 ## 七、高可用分布式配置
 
@@ -1768,43 +1768,43 @@ public class TestController {
 
 8761：注册中心
 
-![1553585457811](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553585457811.png)
+![1553585457811](/1553585457811.png)
 
 
 
 8881：config-server
 
-![1553585516189](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553585516189.png)
+![1553585516189](/1553585516189.png)
 
 8883：config-server
 
-![1553585561928](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553585561928.png)
+![1553585561928](/1553585561928.png)
 
 8882：config-client
 
-![1553585781306](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553585781306.png)
+![1553585781306](/1553585781306.png)
 
 开启eureka-server、config-server【两个实例】、config-client
 
-![1553585831697](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553585831697.png)
+![1553585831697](/1553585831697.png)
 
 通过config-server的两个实例端口8881、8883访问Git上的配置，均可访问到；
 
-![1553585895892](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553585895892.png)
+![1553585895892](/1553585895892.png)
 
 通过config-client的API映射访问读取Git上配置文件属性值，也可以读取到；
 
-![1553585931646](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553585931646.png)
+![1553585931646](/1553585931646.png)
 
 随机挂掉一个server的实力端口服务【例：8881】，再通过client的端口访问配置文件属性值，依然可以访问，说明配置中心也可以集群部署。
 
-![1553586007548](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553586007548.png)
+![1553586007548](/1553586007548.png)
 
-![1553586043792](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553586043792.png)
+![1553586043792](/1553586043792.png)
 
-![1553586061604](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553586061604.png)
+![1553586061604](/1553586061604.png)
 
-![1553586259591](C:\Users\liushs-s\AppData\Roaming\Typora\typora-user-images\1553586259591.png)
+![1553586259591](/1553586259591.png)
 
 
 

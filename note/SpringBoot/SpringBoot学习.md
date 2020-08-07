@@ -93,7 +93,7 @@ public class ConfigInfoController {
     }
 ```
 
-![images/](C:\Users\Lss\AppData\Roaming\Typora\typora-user-images\1547018881257.png)
+![images/](/1547018881257.png)
 
 **【浏览器地址栏请求默认是get请求】** 
 
@@ -683,11 +683,11 @@ springApplication.run(args);
 
 ​	a、将打包成的war包拷贝至Tomcat目录下的webapps中
 
-![images/](C:\Users\Lss\AppData\Roaming\Typora\typora-user-images\1547538060051.png)
+![images/](/1547538060051.png)
 
 ​	b、在Tomcat目录下的bin目录启动Tomcat服务
 
-![images/](C:\Users\Lss\AppData\Roaming\Typora\typora-user-images\1547538131389.png)
+![images/](/1547538131389.png)
 
 ​	c、启动之后即可运行，在浏览器输入访问地址就可以访问了
 

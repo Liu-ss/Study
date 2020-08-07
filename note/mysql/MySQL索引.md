@@ -31,8 +31,7 @@ MySQL使用了B+索引
 
 
 
-
-![image-20200730110815793](C:\Users\liushensuo\AppData\Roaming\Typora\typora-user-images\image-20200730110815793.png)
+![image-20200730110815793](../../images/mysql/image-20200730110815793.png)
 
 叶子节点只存储真实数据；非叶子节点不存储真实数据，只存储指引搜索方向的数据项
 
