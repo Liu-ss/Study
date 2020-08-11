@@ -1,0 +1,15 @@
+Windows解压直用Redis
+
+安装Redis服务：redis-server.exe --service-install redis.windows.conf --service-name redisserver1 --loglevel verbose
+启动服务：redis-server.exe  --service-start --service-name redisserver1
+停止服务：redis-server.exe  --service-stop --service-name redisserver1
+卸载服务：需使用管理员身份打开CMD 执行命令：sc delete name(例：sc delete redisserver1)
+
+windows修改Redis端口号不生效
+直接将conf文件拖进redis-server.exe
+或执行命令 redis-server.exe ./redis.windows.conf
+
+windows配置Redis环境变量
+CMD启动：redis-cli -h 127.0.0.1 -p 6379
+Redis存值：set test 22222
+Redis取值：get test
