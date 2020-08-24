@@ -5,6 +5,7 @@ import AlgorithmStudy.study.study01.SortAlgorithm;
 import AlgorithmStudy.study.study01.Test01;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Main {
 
@@ -17,8 +18,9 @@ public class Main {
         int[] arr = {5,8,3,1,4,7};
         SortAlgorithm sortAlgorithm = new SortAlgorithm();
 
-        // Java中的排序
+        // JDK中数组的排序使用的快排；Collections.sort使用的是归并排序【或TimSort: 归并+插入排序】
 //        Arrays.sort(arr);
+//        Collections.sort(null);
 //        System.out.println("Java Array sort：" + Arrays.toString(arr));
 
         // 冒泡排序
