@@ -12,11 +12,11 @@ public class BinarySearchTree {
      */
 
     // 根节点
-    private int data;
+    int data;
     // 左子树
-    private BinarySearchTree left;
+    BinarySearchTree left;
     // 右子树
-    private BinarySearchTree right;
+    BinarySearchTree right;
 
 
     /**
@@ -26,8 +26,8 @@ public class BinarySearchTree {
      */
     public BinarySearchTree(int data) {
         this.data = data;
-        this.left = null;
-        this.right = null;
+//        this.left = null;
+//        this.right = null;
     }
 
 
