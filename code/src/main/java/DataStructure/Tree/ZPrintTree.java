@@ -30,8 +30,10 @@ public class ZPrintTree {
         System.out.println();
 
         ZPrintTree printTree = new ZPrintTree();
-        ArrayList<ArrayList<Integer>> arrayList = printTree.print1(tree);
-        System.out.println("Z字形遍历树的结果：" + arrayList.toString());
+        ArrayList<ArrayList<Integer>> arrayList1 = printTree.print1(tree);
+        ArrayList<ArrayList<Integer>> arrayList = printTree.print(tree);
+        System.out.println("print1 - Z字形遍历树的结果：" + arrayList1.toString());
+        System.out.println("print - Z字形遍历树的结果：" + arrayList.toString());
         // Z字形遍历树的结果：[[5], [8, 2], [1, 3, 6, 9], [10, 7, 4]]
 
     }
@@ -41,7 +43,6 @@ public class ZPrintTree {
      * 标记位：1-从左往右  0-从右往左
      * 借助栈：当从右往左遍历，将数据按左至右压栈，然后出栈
      *
-     * This method has a problem to fix -- to be continue
      */
     public ArrayList<ArrayList<Integer>> print(BinarySearchTree tree){
 
@@ -80,11 +81,11 @@ public class ZPrintTree {
 
                     list.add(temp.data);
 
-                    if (tree.left != null) {
-                        queue.addLast(tree.left);
+                    if (temp.left != null) {
+                        queue.addLast(temp.left);
                     }
-                    if (tree.right != null) {
-                        queue.addLast(tree.right);
+                    if (temp.right != null) {
+                        queue.addLast(temp.right);
                     }
                 }
             } else {
@@ -98,11 +99,11 @@ public class ZPrintTree {
                     BinarySearchTree temp = queue.removeFirst();
                     stack.push(temp.data);
 
-                    if (tree.left != null) {
-                        queue.addLast(tree.left);
+                    if (temp.left != null) {
+                        queue.addLast(temp.left);
                     }
-                    if (tree.right != null) {
-                        queue.addLast(tree.right);
+                    if (temp.right != null) {
+                        queue.addLast(temp.right);
                     }
                 }
 
