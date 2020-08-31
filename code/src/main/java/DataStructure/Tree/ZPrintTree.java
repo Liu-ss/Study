@@ -1,9 +1,9 @@
 package DataStructure.Tree;
 
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Stack;
+import javax.swing.tree.TreeNode;
+import java.beans.BeanInfo;
+import java.util.*;
 
 /**
  * Z字打印树
@@ -30,11 +30,26 @@ public class ZPrintTree {
         System.out.println();
 
         ZPrintTree printTree = new ZPrintTree();
-        ArrayList<ArrayList<Integer>> arrayList1 = printTree.print1(tree);
-        ArrayList<ArrayList<Integer>> arrayList = printTree.print(tree);
-        System.out.println("print1 - Z字形遍历树的结果：" + arrayList1.toString());
-        System.out.println("print - Z字形遍历树的结果：" + arrayList.toString());
+
+//        ArrayList<ArrayList<Integer>> arrayList1 = printTree.print1(tree);
+//        ArrayList<ArrayList<Integer>> arrayList = printTree.print(tree);
+//        System.out.println("print1 - Z字形遍历树的结果：" + arrayList1.toString());
+//        System.out.println("print - Z字形遍历树的结果：" + arrayList.toString());
         // Z字形遍历树的结果：[[5], [8, 2], [1, 3, 6, 9], [10, 7, 4]]
+
+
+        // 按层打印树
+        ArrayList<ArrayList<Integer>> list = printTree.printTree(tree);
+
+        for (int m = 0; m < list.size(); m++) {
+            List newList = list.get(m);
+            for (int n = 0; n < newList.size(); n++) {
+                System.out.print(newList.get(n) + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("==============================");
+        System.out.println(list.toString());
 
     }
 
@@ -186,8 +201,42 @@ public class ZPrintTree {
     }
 
 
+    /**
+     * 将二叉树打印出来，每层一行  即：
+     *         5
+     *    2         8
+     * 1    3    6      9
+     *        4       7   10
+     *
+     * 打印出：
+     * 5
+     * 2 8
+     * 1 3 6 9
+     * 4 7 10
+     */
+    public ArrayList<ArrayList<Integer>>  printTree(BinarySearchTree tree) {
 
-
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        if(tree == null)
+            return res;
+        LinkedList<BinarySearchTree> nodes = new LinkedList<BinarySearchTree>();
+        nodes.addLast(tree);
+        while(!nodes.isEmpty()){
+            int num = nodes.size();
+            ArrayList<Integer> layer = new ArrayList<Integer>();
+            while(num>0){
+                num--;
+                BinarySearchTree temp = nodes.removeFirst();
+                layer.add(temp.data);
+                if(temp.left!=null)
+                    nodes.addLast(temp.left);
+                if(temp.right!=null)
+                    nodes.addLast(temp.right);
+            }
+            res.add(layer);
+        }
+        return res;
+    }
 
 
 }
